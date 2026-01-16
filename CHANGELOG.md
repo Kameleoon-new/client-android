@@ -1,6 +1,10 @@
 [trackConversion]: https://developers.kameleoon.com/feature-management-and-experimentation/mobile-sdks/android-sdk#trackconversion
 # Changelog
 All notable changes to this project will be documented in this file.
+## 4.22.0 - 2026-01-16
+### Features
+* Introduced the [`activityTrackingIntervalMillisecond` (`activity_tracking_interval_millisecond`)](https://developers.kameleoon.com/feature-management-and-experimentation/mobile-sdks/android-sdk/#additional-configuration) parameter, which defines the interval at which activity events are sent. This helps reduce network usage and battery consumption. The minimum and default value is `15 000` ms. Setting this value to `0` disables periodic activity tracking; in this case, only a single activity event is sent at application startup.
+
 ## 4.21.1 - 2025-12-24
 ### Bug fixes
 * Fixed an issue where **legal consent** was not taken into account during holdout evaluation.
