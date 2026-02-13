@@ -1,6 +1,11 @@
 [trackConversion]: https://developers.kameleoon.com/feature-management-and-experimentation/mobile-sdks/android-sdk#trackconversion
 # Changelog
 All notable changes to this project will be documented in this file.
+## 4.23.0 - 2026-02-13
+### Features
+* Updated the allowed range for the [`trackingIntervalMillisecond`](https://developers.kameleoon.com/feature-management-and-experimentation/mobile-sdks/android-sdk#additional-configuration). The new range is from **`1000` ms** (default) to **`5000` ms**, allowing a reduction in the number of tracking requests.
+* Introduced a new `track` parameter for [`addData`](https://developers.kameleoon.com/feature-management-and-experimentation/mobile-sdks/android-sdk/#adddata). When set to `false`, the data is stored locally and used only for targeting evaluation; it is not sent to the Data API, helping to prevent duplicate data from being recorded. The default value is `true`. This behavior is consistent with the `track` parameter used in evaluation methods such as [`getVariation`](https://developers.kameleoon.com/feature-management-and-experimentation/mobile-sdks/android-sdk/#getvariation).
+
 ## 4.22.0 - 2026-01-16
 ### Features
 * Introduced the [`activityTrackingIntervalMillisecond` (`activity_tracking_interval_millisecond`)](https://developers.kameleoon.com/feature-management-and-experimentation/mobile-sdks/android-sdk/#additional-configuration) parameter, which defines the interval at which activity events are sent. This helps reduce network usage and battery consumption. The minimum and default value is `15 000` ms. Setting this value to `0` disables periodic activity tracking; in this case, only a single activity event is sent at application startup.
