@@ -1,6 +1,10 @@
 [trackConversion]: https://developers.kameleoon.com/feature-management-and-experimentation/mobile-sdks/android-sdk#trackconversion
 # Changelog
 All notable changes to this project will be documented in this file.
+## 4.24.0 - 2026-02-17
+### Features
+* Added support for version strings containing pre-release and build metadata, in accordance with [Semantic Versioning](https://semver.org/#semantic-versioning-200). Pre-release and build metadata components are currently ignored, and the version is normalized to `major.minor.patch`. Full support for **Semantic Versioning**, including pre-release, will be introduced in future releases.
+
 ## 4.23.0 - 2026-02-13
 ### Features
 * Updated the allowed range for the [`trackingIntervalMillisecond`](https://developers.kameleoon.com/feature-management-and-experimentation/mobile-sdks/android-sdk#additional-configuration). The new range is from **`1000` ms** (default) to **`5000` ms**, allowing a reduction in the number of tracking requests.
