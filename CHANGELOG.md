@@ -1,6 +1,12 @@
 [trackConversion]: https://developers.kameleoon.com/feature-management-and-experimentation/mobile-sdks/android-sdk#trackconversion
 # Changelog
 All notable changes to this project will be documented in this file.
+## 4.25.0 - 2026-04-22
+### Features
+* Improved the performance of the [`getDataFile()`](https://developers.kameleoon.com/feature-management-and-experimentation/mobile-sdks/android-sdk#getdatafile) method. It now returns a cached [`DataFile`](https://developers.kameleoon.com/feature-management-and-experimentation/mobile-sdks/android-sdk/#datafile) instance that is refreshed whenever the SDK configuration is updated.
+* Added a new `dateModified` property to the [`DataFile`](https://developers.kameleoon.com/feature-management-and-experimentation/mobile-sdks/android-sdk/#datafile) object returned by the [`getDataFile`](https://developers.kameleoon.com/feature-management-and-experimentation/mobile-sdks/android-sdk#getdatafile) method.
+* The [`getFeatureList`](https://developers.kameleoon.com/feature-management-and-experimentation/mobile-sdks/android-sdk/#getfeaturelist) method has been deprecated in favor of `getDataFile()`.
+
 ## 4.24.0 - 2026-02-17
 ### Features
 * Added support for version strings containing pre-release and build metadata, in accordance with [Semantic Versioning](https://semver.org/#semantic-versioning-200). Pre-release and build metadata components are currently ignored, and the version is normalized to `major.minor.patch`. Full support for **Semantic Versioning**, including pre-release, will be introduced in future releases.
