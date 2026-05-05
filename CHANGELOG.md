@@ -1,6 +1,15 @@
 [trackConversion]: https://developers.kameleoon.com/feature-management-and-experimentation/mobile-sdks/android-sdk#trackconversion
 # Changelog
 All notable changes to this project will be documented in this file.
+## 4.26.0 - 2026-05-05
+### Features
+* Added support for **during the current visit** and **during any of the last visits** settings across the following targeting conditions:
+  - Converted Goal
+  - Feature Flag
+  - Web Experiment
+  - Personalization
+  - Exclusive Campaign
+
 ## 4.25.0 - 2026-04-22
 ### Features
 * Improved the performance of the [`getDataFile()`](https://developers.kameleoon.com/feature-management-and-experimentation/mobile-sdks/android-sdk#getdatafile) method. It now returns a cached [`DataFile`](https://developers.kameleoon.com/feature-management-and-experimentation/mobile-sdks/android-sdk/#datafile) instance that is refreshed whenever the SDK configuration is updated.
