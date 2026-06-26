@@ -1,6 +1,10 @@
 [trackConversion]: https://developers.kameleoon.com/feature-management-and-experimentation/mobile-sdks/android-sdk#trackconversion
 # Changelog
 All notable changes to this project will be documented in this file.
+## 4.26.1 - 2026-06-26
+### Bug fixes
+* Fixed an issue where, in certain scenarios, the SDK data file (configuration) was not updated at the configured [`refreshIntervalMinute`](https://docs.kameleoon.com/developer-docs/sdks/mobile-sdks/android-sdk#additional-configuration) interval in [polling](https://docs.kameleoon.com/developer-docs/feature-experimentation/technical-reference/technical-considerations#polling-default) mode and was instead refreshed only after the application restarted.
+
 ## 4.26.0 - 2026-05-05
 ### Features
 * Added support for **during the current visit** and **during any of the last visits** settings across the following targeting conditions:
