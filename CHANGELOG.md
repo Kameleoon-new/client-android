@@ -1,6 +1,10 @@
 [trackConversion]: https://developers.kameleoon.com/feature-management-and-experimentation/mobile-sdks/android-sdk#trackconversion
 # Changelog
 All notable changes to this project will be documented in this file.
+## 4.26.2 - 2026-07-03
+### Bug fixes
+* Tracking requests are now paused while the application is in the background. Previously, periodic tracking timers would continue running after the app was backgrounded, allowing tracking requests to be sent even when there was no real user engagement. This helps reduce the number of requests sent to Kameleoon servers and prevents inflated visit counts. To continue sending data while the app is in the background, explicitly call [`flush(instant: true)`](https://developers.kameleoon.com/feature-management-and-experimentation/mobile-sdks/android-sdk#flush) from your background handler.
+
 ## 4.26.1 - 2026-06-26
 ### Bug fixes
 * Fixed an issue where, in certain scenarios, the SDK data file (configuration) was not updated at the configured [`refreshIntervalMinute`](https://docs.kameleoon.com/developer-docs/sdks/mobile-sdks/android-sdk#additional-configuration) interval in [polling](https://docs.kameleoon.com/developer-docs/feature-experimentation/technical-reference/technical-considerations#polling-default) mode and was instead refreshed only after the application restarted.
