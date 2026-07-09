@@ -1,6 +1,10 @@
 [trackConversion]: https://developers.kameleoon.com/feature-management-and-experimentation/mobile-sdks/android-sdk#trackconversion
 # Changelog
 All notable changes to this project will be documented in this file.
+## 4.26.3 - 2026-07-09
+### Bug fixes
+* Increased the default and minimum values of the [`activityTrackingIntervalMillisecond` (`activity_tracking_interval_millisecond`)](https://developers.kameleoon.com/feature-management-and-experimentation/mobile-sdks/android-sdk/#additional-configuration) parameter from `15 000` ms to `60 000` ms. This reduces the number of activity requests sent to the Data API and helps prevent `429` (Too Many Requests) responses.
+
 ## 4.26.2 - 2026-07-03
 ### Bug fixes
 * Tracking requests are now paused while the application is in the background. Previously, periodic tracking timers would continue running after the app was backgrounded, allowing tracking requests to be sent even when there was no real user engagement. This helps reduce the number of requests sent to Kameleoon servers and prevents inflated visit counts. To continue sending data while the app is in the background, explicitly call [`flush(instant: true)`](https://developers.kameleoon.com/feature-management-and-experimentation/mobile-sdks/android-sdk#flush) from your background handler.
