@@ -1,6 +1,17 @@
 [trackConversion]: https://developers.kameleoon.com/feature-management-and-experimentation/mobile-sdks/android-sdk#trackconversion
 # Changelog
 All notable changes to this project will be documented in this file.
+## 4.27.0 - 2026-08-28
+### Features
+* Added support for SDK event handlers through the new [`setEventHandler`][setEventHandler] API:
+  - `DATAFILE_UPDATE` notifies when the SDK data file (configuration) is updated with [polling](https://docs.kameleoon.com/developer-docs/feature-experimentation/technical-reference/technical-considerations#polling-default-%E2%80%8B) or [streaming](https://docs.kameleoon.com/developer-docs/feature-experimentation/technical-reference/technical-considerations#streaming-premium-option-%E2%80%8B) modes.
+  - `HTTP_REQUEST` notifies when SDK HTTP requests complete successfully or fail. The handler is called once per each actual HTTP request attempt, including retries.
+  - HTTP request events include the request type, HTTP status or failure details, and request duration.
+  - Passing `null` to `setEventHandler` clears the handler for the selected event type.
+* The [`onUpdateConfiguration`](https://developers.kameleoon.com/feature-management-and-experimentation/mobile-sdks/android-sdk#onupdateconfiguration) method has been deprecated in favor of [`setEventHandler`][setEventHandler] with the `DATAFILE_UPDATE` event type.
+### Bug fixes
+* Targeting conditions of unknown (unsupported) types are now evaluated to `false` instead of `true`, so visitors are no longer targeted by segments containing web-specific conditions the SDK does not support.
+
 ## 4.26.3 - 2026-07-09
 ### Bug fixes
 * Increased the default and minimum values of the [`activityTrackingIntervalMillisecond` (`activity_tracking_interval_millisecond`)](https://developers.kameleoon.com/feature-management-and-experimentation/mobile-sdks/android-sdk/#additional-configuration) parameter from `15 000` ms to `60 000` ms. This reduces the number of activity requests sent to the Data API and helps prevent `429` (Too Many Requests) responses.
