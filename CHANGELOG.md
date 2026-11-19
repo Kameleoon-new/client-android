@@ -1,6 +1,17 @@
 [trackConversion]: https://developers.kameleoon.com/feature-management-and-experimentation/mobile-sdks/android-sdk#trackconversion
 # Changelog
 All notable changes to this project will be documented in this file.
+## 4.28.0 - 2026-11-19
+### Features
+* Real-time configuration streaming is now controlled by the new `configUpdateMode` field of the configuration instead of `realTimeUpdate`. The SDK uses streaming only when the field is `STREAMING`. `STREAMING_SERVER_ONLY` enables streaming for server-side SDKs only, so the Android SDK keeps polling in that mode.
+### Bug fixes
+* Fixed the SDK getting stuck without configuration updates when the real-time streaming connection could not be established, or kept being established without delivering an event (for example, when the streaming server answers with an error or with an empty response, or behind a proxy which accepts the connection but forwards nothing). The SDK now retries the connection once after 10 seconds and then falls back to polling, with the first poll after one minute; each successful poll switches back to streaming once it is available again.
+* Fixed configuration updates published while the real-time streaming connection was down (reconnection, server-side close) being missed until the next update. The SDK now resynchronizes the configuration on every (re)connection.
+* Fixed the SDK getting stuck without configuration updates on a stalled streaming connection (e.g. one silently dropped by a NAT or load balancer). The SDK now treats 6 minutes of silence as a connection failure: it reconnects, and falls back to polling if the new connection stalls as well.
+* Fixed an older configuration being applied over a newer one when two configuration fetches (for example, a poll and a fetch triggered by a streaming event) completed out of order. The SDK now ignores a fetched configuration whose `dateModified` is older than the current one's.
+* Made the handling of the real-time streaming connection reliable when the application goes to the background and returns. In streaming mode the SDK now closes the connection and stops all configuration requests while the application is in the background, including the pending reconnections and retries, which previously could keep running or open a duplicated connection. When the application becomes active again, the SDK fetches the configuration and then restores streaming.
+* `KameleoonClientFactory.forget` now stops the configuration polling or streaming of the forgotten client. Previously they kept running until the process exited.
+
 ## 4.27.0 - 2026-08-28
 ### Features
 * Added support for SDK event handlers through the new [`setEventHandler`][setEventHandler] API:
