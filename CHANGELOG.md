@@ -1,6 +1,21 @@
 [trackConversion]: https://developers.kameleoon.com/feature-management-and-experimentation/mobile-sdks/android-sdk#trackconversion
 # Changelog
 All notable changes to this project will be documented in this file.
+## 4.29.0 - 2026-11-23
+### Features
+* Added the "greater than or equal to" (`>=`) and "less than or equal to" (`<=`) operators to the following targeting conditions:
+  - App version
+  - SDK type
+  - Custom data (number)
+  - Total number of visits
+  - Number of visits today
+  - Elapsed time since first visit
+  - Elapsed time since last visit
+
+  These operators will be available in the Kameleoon app with the platform release planned for December 2026.
+### Bug fixes
+* Fixed the Custom data condition with a number operator ignoring a matching value when the custom data also contained a non-numeric value before it (for example, `["invalid", "10"]` did not match `= 10`). Non-numeric values are now skipped individually.
+
 ## 4.28.0 - 2026-11-19
 ### Features
 * Real-time configuration streaming is now controlled by the new `configUpdateMode` field of the configuration instead of `realTimeUpdate`. The SDK uses streaming only when the field is `STREAMING`. `STREAMING_SERVER_ONLY` enables streaming for server-side SDKs only, so the Android SDK keeps polling in that mode.
